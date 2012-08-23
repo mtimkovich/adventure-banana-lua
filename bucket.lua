@@ -16,7 +16,7 @@ end
 
 function Bucket:jump()
     if self:bottom() == SCREEN_HEIGHT then
-        self.vel_y = -25
+        self.vel_y = -300
     end
 end
 
@@ -33,7 +33,7 @@ function Bucket:right()
 end
 
 function Bucket:update(dt)
-    self.y = self.y + self.vel_y
+    self.y = self.y + self.vel_y * dt
 
     if self:bottom() < SCREEN_HEIGHT then
         self.vel_y = self.vel_y + GRAVITY

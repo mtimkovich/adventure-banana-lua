@@ -1,10 +1,10 @@
-require("bucket")
+require "bucket" 
 
 function love.load()
     status = "OK"
 
     -- Constants
-    GRAVITY = 2
+    GRAVITY = 10
     SCREEN_HEIGHT = love.graphics.getHeight()
     SCREEN_WIDTH = love.graphics.getWidth()
     

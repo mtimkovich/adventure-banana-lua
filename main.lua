@@ -13,7 +13,6 @@ function love.load()
     WHITE = {r=255, g=255, b=255}
 
     love.graphics.setBackgroundColor(WHITE.r, WHITE.g, WHITE.b)
-    love.graphics.setColor(BLACK.r, BLACK.g, BLACK.b)
 
     buckets = {}
 
@@ -23,10 +22,13 @@ function love.load()
     end
 end
 
-function love.mousepressed(mousex, mousey, button)
+function love.mousepressed(mouse_x, mouse_y, button)
     if button == "l" then
         for i = 1,3 do
-            if mousex > buckets[i].x and mousex < buckets[i]:right() and mousey > buckets[i].y then
+            if mouse_x > buckets[i]:get_x() and 
+                mouse_x < buckets[i]:get_right() and 
+                mouse_y > buckets[i]:get_y() then
+
                 buckets[i]:jump()
                 break
             end
@@ -35,6 +37,8 @@ function love.mousepressed(mousex, mousey, button)
 end
 
 function love.update(dt)
+    love.graphics.setColor(BLACK.r, BLACK.g, BLACK.b)
+
     for i = 1,3 do
         buckets[i]:update(dt)
     end
@@ -45,6 +49,6 @@ function love.draw()
 
     -- Draw the buckets
     for i = 1,3 do
-        love.graphics.rectangle("fill", buckets[i].x, buckets[i].y, buckets[i].width, buckets[i].height)
+        love.graphics.rectangle("fill", buckets[i]:get_x(), buckets[i]:get_y(), buckets[i]:get_width(), buckets[i]:get_height())
     end
 end

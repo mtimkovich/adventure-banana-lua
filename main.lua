@@ -49,17 +49,16 @@ function love.update(dt)
 end
 
 function love.draw()
+    love.graphics.setColor(YELLOW.r, YELLOW.g, YELLOW.b)
+
+    love.graphics.rectangle("fill", banana:get_x(), banana:get_y(), banana:get_width(), banana:get_height())
+
     love.graphics.setColor(BLACK.r, BLACK.g, BLACK.b)
 
-    status = banana.y
     love.graphics.print(status, 0, 0)
 
     -- Draw the buckets
     for i = 1,3 do
         love.graphics.rectangle("fill", buckets[i]:get_x(), buckets[i]:get_y(), buckets[i]:get_width(), buckets[i]:get_height())
     end
-
-    love.graphics.setColor(YELLOW.r, YELLOW.g, YELLOW.b)
-
-    love.graphics.rectangle("fill", banana:get_x(), banana:get_y(), banana:get_width(), banana:get_height())
 end

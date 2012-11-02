@@ -5,10 +5,12 @@ function Bucket:new(x)
     bucket.width = 100
     bucket.height = 150
 
-    bucket.x = x
-    bucket.y = SCREEN_HEIGHT - bucket.height
+    bucket.pos = {
+        x = x,
+        y = SCREEN_HEIGHT - bucket.height,
+    }
 
-    bucket.vel_y = 0
+    bucket.vel = {y = 0}
 
     setmetatable(bucket, { __index = Bucket })
     return bucket
@@ -23,38 +25,38 @@ function Bucket:get_width()
 end
 
 function Bucket:get_x()
-    return self.x
+    return self.pos.x
 end
 
 function Bucket:get_y()
-    return self.y
+    return self.pos.y
 end
 
 function Bucket:get_bottom()
-    return self.y + self.height
+    return self.pos.y + self.height
 end
 
 function Bucket:set_bottom(y)
-    self.y = y - self.height
+    self.pos.y = y - self.height
 end
 
 function Bucket:get_right()
-    return self.x + self.width
+    return self.pos.x + self.width
 end
 
 function Bucket:jump()
     if self:get_bottom() == SCREEN_HEIGHT then
-        self.vel_y = -300
+        self.vel.y = -300
     end
 end
 
 function Bucket:update(dt)
-    self.y = self.y + self.vel_y * dt
+    self.pos.y = self.pos.y + self.vel.y * dt
 
     if self:get_bottom() < SCREEN_HEIGHT then
-        self.vel_y = self.vel_y + GRAVITY
+        self.vel.y = self.vel.y + GRAVITY
     else
         self:set_bottom(SCREEN_HEIGHT)
-        self.vel_y = 0
+        self.vel.y = 0
     end
 end

@@ -6,22 +6,26 @@ function Banana:new()
     banana.width = 45
     banana.height = 45
 
-    banana.x = SCREEN_WIDTH - banana.width
-    banana.y = SCREEN_HEIGHT / 1.8
+    banana.pos = {
+        x = SCREEN_WIDTH - banana.width,
+        y = SCREEN_HEIGHT / 1.8,
+    }
 
-    banana.vel_x = 25
-    banana.vel_y = -20
+    banana.vel = {
+        x = 500,
+        y = -20,
+    }
 
     setmetatable(banana, { __index = Banana })
     return banana
 end
 
 function Banana:get_x()
-    return self.x
+    return self.pos.x
 end
 
 function Banana:get_y()
-    return self.y
+    return self.pos.y
 end
 
 function Banana:get_width()
@@ -33,8 +37,8 @@ function Banana:get_height()
 end
 
 function Banana:update(dt)
-    self.x = self.x - self.vel_x * dt
-    self.y = self.y + self.vel_y * dt
+    self.pos.x = self.pos.x - self.vel.x * dt
+    self.pos.y = self.pos.y + self.vel.y * dt
 
-    self.vel_y = self.vel_y + GRAVITY
+    self.vel.y = self.vel.y + GRAVITY
 end

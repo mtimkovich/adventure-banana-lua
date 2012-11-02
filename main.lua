@@ -44,11 +44,14 @@ function love.update(dt)
     for i = 1,3 do
         buckets[i]:update(dt)
     end
+
+    banana:update(dt)
 end
 
 function love.draw()
     love.graphics.setColor(BLACK.r, BLACK.g, BLACK.b)
 
+    status = banana.y
     love.graphics.print(status, 0, 0)
 
     -- Draw the buckets

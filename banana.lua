@@ -12,7 +12,7 @@ function Banana:new()
     banana.vel_x = 25
     banana.vel_y = -20
 
-    setmetatable(banana, { __index = Bucket })
+    setmetatable(banana, { __index = Banana })
     return banana
 end
 
@@ -30,4 +30,11 @@ end
 
 function Banana:get_height()
     return self.height
+end
+
+function Banana:update(dt)
+    self.x = self.x - self.vel_x * dt
+    self.y = self.y + self.vel_y * dt
+
+    self.vel_y = self.vel_y + GRAVITY
 end

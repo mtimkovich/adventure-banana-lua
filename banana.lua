@@ -8,12 +8,12 @@ function Banana:new()
 
     banana.pos = {
         x = SCREEN_WIDTH - banana.width,
-        y = SCREEN_HEIGHT / 1.8,
+        y = SCREEN_HEIGHT / 3,
     }
 
     banana.vel = {
         x = 500,
-        y = -20,
+        y = -200,
     }
 
     setmetatable(banana, { __index = Banana })
